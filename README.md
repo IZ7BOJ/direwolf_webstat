@@ -69,8 +69,8 @@ If you want to set static interface callsign (but it can be temporarily changed 
 $static_if = 1;
 $static_if_index = 0;
 
-
 Set $static_if to 1 to enable
+
 Software stability
 
 This is a BETA software. It can contain some bugs and may be written in non-efficient way. Please contact author if you find any bug.
