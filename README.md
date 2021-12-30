@@ -6,20 +6,14 @@ Main characteristics:
 - Possibility to monitor multiple radio interfaces
 - Possibility to show cusom info and custom logo file on the bottom of the page (edit “custom.php” file, which can contain HTML and PHP code)
 - Counters of total frames in log
-- System status table (reads parameters directly from OS) with followinf fields:
-  – OS version
-  – kernel version
-  – Direwolf version
-  – System uptime
-  – CPU temperature
-  – CPU frequency
- - Heard station list table (observation period selectable by the user in a drop-down list) with following fields:
-  – Heard Callsign
-  – N. of packets heard for callsign
-  – Direct link for showing the station on aprs.fi
-  – Static/moving indicator
-  – Via indicator (digi/direct/digi+direct)
-  – Raw packet view for each callsign
+- System status table (reads parameters directly from OS)
+- Heard station list table (observation period selectable by the user in a drop-down list) with following fields:
+– Heard Callsign
+– N. of packets heard for callsign
+– Direct link for showing the station on aprs.fi
+– Static/moving indicator
+– Via indicator (digi/direct/digi+direct)
+– Raw packet view for each callsign
 - Possibility to sort the table in ascending or descending order on each colum.
 - Live monitor page: ajax page for watching ax25 traffic in realtime.
 
@@ -77,11 +71,8 @@ Set $static_if to 1 to enable
 Software stability
 
 This is a BETA software. It can contain some bugs and may be written in non-efficient way. Please contact author if you find any bug.
-Author:
-
-    Alfredo IZ7BOJ
 
 License
 
-You can modify this program, but please give a credit to original author.
+You can modify this program, but please give a credit to original author (IZ7BOJ).
 Project is free for non-commercial use. You can modify and publish this software, but you have to put an information about original authors.
