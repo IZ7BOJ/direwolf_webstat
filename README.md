@@ -39,7 +39,6 @@ If you use a Raspian Stretch or Raspbian Buster use:
 
 then just copy all files to the webistes folder in your WWW server directory.
 
-
 To configure, open config.php file with some text editor.
 
 Enter full path to your direwolf log file directory:
@@ -67,6 +66,8 @@ $static_if_index = 0;
 
 
 Set $static_if to 1 to enable
+
+NOTE: remember to execute direwolf with "-l" option, otherwise the log is not generated and the interface won't work
 
 Software stability
 
