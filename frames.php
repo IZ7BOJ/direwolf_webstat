@@ -116,6 +116,6 @@ table, th, td {
 	</table>
 
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<center><a href="https://github.com/IZ7BOJ/" target="_blank">Direwolf Simple Webstat version <?php echo $version; ?></a> by Alfredo IZ7BOJ</center>
+	<center><a href="https://github.com/IZ7BOJ/direwolf_webstat" target="_blank">Direwolf Simple Webstat version <?php echo $version; ?></a> by Alfredo IZ7BOJ</center>
 </body>
 </html>
