@@ -46,9 +46,9 @@ function logexists()
 {
 	global $logpath;
 	global $version;
-	if(!file_exists($logpath.date("Y-m-d").".log"))  {
-			echo '<font color="red" size="6"><b>Error. Cannot open direwolf log file '.$logpath.date("Y-m-d").'.log</b></font>';
-			echo '<br><br>Please check, if log file path in config.php is set correctly.<br>Plase check, if file '.$logpath.date("Y-m-d").'.log exists.';
+	if(!file_exists($logpath.gmdate("Y-m-d").".log"))  {
+			echo '<font color="red" size="6"><b>Error. Cannot open direwolf log file '.$logpath.gmdate("Y-m-d").'.log</b></font>';
+			echo '<br><br>Please check, if log file path in config.php is set correctly.<br>Plase check, if file '.$logpath.gmdate("Y-m-d").'.log exists.';
 			echo '<br><br><b>Pointless to continue.</b>';
 			echo '<br><br><br><br><br><br><center>Direwolf Simple Webstat version '.$version.' by Alfredo IZ7BOJ 2021</center>';
 			die();
