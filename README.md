@@ -61,6 +61,7 @@ It's recommended to set also another settings:
 Your station latitude and longtitude for distance calculation (in decimal degrees):
 
 $stationlat = 49.013855;
+
 $stationlon = 28.762225;
 
 Normally every time you open statistics website, you have to enter interface index of Direwolf (starts from 0 by default). 
