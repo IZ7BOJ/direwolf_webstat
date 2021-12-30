@@ -140,7 +140,7 @@ $if = $_SESSION['if'];
 		 $viastations = array(); //stations received via digi
 		 $lines = 0;
 		 
-		 $logfile = file($logpath.date("Y-m-d").".log"); //read log file
+		 $logfile = file($logpath.gmdate("Y-m-d").".log"); //read log file
 		 $linesinlog = count($logfile);
 		 while ($lines < $linesinlog) { //read line by line
 			$line = $logfile[$lines];
