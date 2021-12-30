@@ -68,7 +68,7 @@ for ($i=0;$i<=sizeof($interfaces)-1;$i++) {
 ?>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<center><a href="" target="_blank">direwolf Simple Webstat version <?php echo $version; ?></a> by Alfredo IZ7BOJ</center>
+<center><a href="https://github.com/IZ7BOJ/direwolf_webstat" target="_blank">direwolf Simple Webstat version <?php echo $version; ?></a> by Alfredo IZ7BOJ</center>
 
 </body>
 </html>
