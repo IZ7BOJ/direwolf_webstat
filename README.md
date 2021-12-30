@@ -25,7 +25,26 @@ Main characteristics:
 
 Installing and using
 
-For installation just copy all files to the webistes folder in your WWW server directory. Make sure it supports PHP.
+Update your system:
+
+    sudo apt-get update && sudo apt-get upgrade
+
+Install a lightweight webserver:
+
+    sudo apt-get install lighttpd
+
+Install PHP and enable the required modules:
+
+If you use a Raspian Wheezy and Raspbian Jessie use:
+
+    sudo apt-get install php5-common php5-cgi php5
+
+If you use a Raspian Stretch or Raspbian Buster use:
+
+    sudo apt-get install php7.3-common php7.3-cgi php
+
+then just copy all files to the webistes folder in your WWW server directory.
+
 
 To configure, open config.php file with some text editor.
 
