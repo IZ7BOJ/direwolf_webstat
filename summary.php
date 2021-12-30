@@ -230,7 +230,7 @@ $if = $_SESSION['if'];
       <br>
       <hr>
       <br>
-      <center><a href="" target="_blank">Direwolf Simple Webstat version <?php echo $version; ?></a> by Alfredo IZ7BOJ</center>
+      <center><a href="https://github.com/IZ7BOJ/direwolf_webstat" target="_blank">Direwolf Simple Webstat version <?php echo $version; ?></a> by Alfredo IZ7BOJ</center>
       <br>
    </body>
 </html>
