@@ -1,5 +1,4 @@
-
-﻿<?php
+<?php
 /******************************************************************************************
 This file is a part of SIMPLE WEB STATICSTICS GENERATOR FROM Direwolf LOG FILE
 It's very simple and small APRX statictics generator in PHP. It's parted to smaller files and they will work independent from each other (but you always need chgif.php).
