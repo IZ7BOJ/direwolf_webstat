@@ -79,8 +79,7 @@ table, th, td {
 	<tbody>
 		<tr align="center">
 		<?php
-//		$logfile = file($logpath."2021-12-03.log"); //read log file
-		$logfile = file($logpath.date("Y-m-d").".log"); //read log file
+		$logfile = file($logpath.gmdate("Y-m-d").".log"); //read log file
 		$header = str_getcsv($logfile[0]); // take header from first row
 		echo '<th bgcolor="#ffd700"><b><font color="blue">Date</font></b></th>';
 		echo '<th bgcolor="#ffd700"><b><font color="blue">Time(Z)</font></b></th>';
