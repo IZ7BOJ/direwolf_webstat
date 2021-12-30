@@ -67,7 +67,9 @@ Normally every time you open statistics website, you have to enter interface ind
 If you want to set static interface callsign (but it can be temporarily changed via website for one session), you can do this here:
 
 $static_if = 1;
+
 $static_if_index = 0;
+
 
 Set $static_if to 1 to enable
 
