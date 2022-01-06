@@ -37,6 +37,14 @@ If you use a Raspian Stretch or Raspbian Buster use:
 
     sudo apt-get install php7.3-common php7.3-cgi php
 
+Now continue with:
+
+>sudo lighty-enable-mod fastcgi
+
+>sudo lighty-enable-mod fastcgi-php
+
+>sudo service lighttpd force-reload
+
 then just copy all files to the webistes folder in your WWW server directory.
 
 To configure, open config.php file with some text editor.
