@@ -76,7 +76,7 @@ function stationparse($frame) //function for parsing station information
 		$frame=str_getcsv($frame,",");
 		$utime = $frame[1];
 		if($utime > $time) { //if frame was received in time range
-			$stationcall = strtoupper($frame[3]);
+			$stationcall = strtoupper($frame[8]);
 			if(array_key_exists($stationcall, $receivedstations)) { //if this callsign is already on stations list
 				$receivedstations[$stationcall][0]++; //increment the number of frames from this station
 			} else { //if this callsign is not on the list
@@ -136,13 +136,11 @@ function haversine($frame)
 
 	$bearing = rad2deg(atan2(sin($lonDelta)*cos($latTo), cos($latFrom)*sin($latTo)-sin($latFrom)*cos($latTo)*cos($latDelta)));
 	if($bearing < 0) $bearing += 360;
-
+	$bearing = round($bearing, 1);
+	
 	$angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
 	cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
 	$distance = round($angle * 6371, 2); //gives result in km rounded to 2 digits after comma
 
-	$declat = round($declat, 5);
-	$declon = round($declon, 5);
-	$bearing = round($bearing, 1);
 }
 ?>
