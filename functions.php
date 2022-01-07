@@ -87,9 +87,6 @@ function stationparse($frame) //function for parsing station information
 				haversine($frame);
 				$receivedstations[$stationcall][2] = $distance; //add last distance
 				$receivedstations[$stationcall][3] = $bearing; //add last bearing
-			} else {
-				$receivedstations[$stationcall][2] = "N/A";
-				$receivedstations[$stationcall][3] = "N/A";
 			}
 			if($frame[12]==NULL) { //if speed is not null, it's a static station
 						if(!in_array($stationcall, $staticstations)) { 
