@@ -213,7 +213,7 @@ $if = $_SESSION['if'];
                </td>
                <td align="center">
                   <?php
-                   if ($nm[2]!=="") :
+                   if (isset($nm[2])) :
                         echo $nm[2]." Km";
                    else:
                         echo "N/A";
@@ -222,7 +222,7 @@ $if = $_SESSION['if'];
                </td>
                <td align="center">
                   <?php
-                    if ($nm[3]!==""):
+                    if (isset($nm[3])):
                         echo $nm[3]." °";
                     else:
                         echo "NA";
