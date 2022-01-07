@@ -213,12 +213,20 @@ $if = $_SESSION['if'];
                </td>
                <td align="center">
                   <?php
-                     echo $nm[2]." Km"
+                   if ($nm[2]!=="") :
+                        echo $nm[2]." Km";
+                   else:
+                        echo "N/A";
+                   endif;
                      ?>
                </td>
                <td align="center">
                   <?php
-                     echo $nm[3]." °"
+                    if ($nm[3]!==""):
+                        echo $nm[3]." °";
+                    else:
+                        echo "NA";
+                    endif;
                      ?>
                </td>
             </tr>
