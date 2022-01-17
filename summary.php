@@ -164,6 +164,7 @@ $if = $_SESSION['if'];
          <option value="e" <?php if(isset($_GET['time'])&&($_GET['time'] == 'e')) echo 'selected="selected"'?>>all</option>
       </select>
       <input type="submit" value="Refresh">
+      </form>
 	  <br>
 	  <?php
 	  echo "<br><br><b>".count($receivedstations)." Stations received on radio interface ".$if." (sorted by Last Time Heard)</b><br><br>";
