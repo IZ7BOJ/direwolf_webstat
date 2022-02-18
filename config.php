@@ -23,6 +23,9 @@ $stationlon = 16.421246;  //station longtitude in decimal degrees
 //logo path,with file name, shown on the top of the page
 $logourl="direwolf.png";
 
+//miles/km distsance selector
+$miles = 0; //1 to enable miles, 0 to enable km
+
 //AX.25 realtime traffic watch config
 $refresh=1000; //refresh time in ms. Don't go below 1000
 $timestampcolor="silver"; //color of timestamp
