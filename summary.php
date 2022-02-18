@@ -215,7 +215,11 @@ $if = $_SESSION['if'];
                <td align="center">
                   <?php
                    if (isset($nm[2])) :
-                        echo $nm[2]." Km";
+		       if ($miles == 0):
+                                echo $nm[2]." Km";
+                        else:
+                                echo $nm[2]*0.6214." miles";
+                        endif;
                    else:
                         echo "N/A";
                    endif;
