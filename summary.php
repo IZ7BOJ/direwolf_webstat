@@ -185,7 +185,7 @@ $if = $_SESSION['if'];
                <th bgcolor="#ffd700"><b><font color="blue">Last Bearing</font></b></th>
             </tr>
             <?php
-               while(list($c, $nm) = each($receivedstations))
+               foreach($receivedstations as $c=>$nm)
                {
                ?>
             <tr>
