@@ -51,9 +51,9 @@ then just copy all files to the webistes folder in your WWW server directory.
 To configure, open config.php file with some text editor.
 
 Enter full path to your direwolf log file directory:
-
+```
 $logpath = "/some/path/";
-
+```
 I put it under /var/log/direwolf/ but you are free to decide. Incorrect path will make the script unable to work.
 
 This was the only required step and now software should work.
