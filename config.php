@@ -4,7 +4,7 @@ Configuration file for Direwolf SimpleWebstat.
 ********************************************************/
 
 $version = "0.1beta";
-$logpath = "/var/log/direwolf/"; //path to the direwolf log directory
+$logpath = "C:\Users\IZ7BOJ\aprs\\"; //path to the direwolf log directory. Be sure to terminate with \\ otherwise it's interpreted as escape character!
 
 //interfaces index declared in direwolf conf file. Indexes separated by commas
 $interfaces=array(0,1);
