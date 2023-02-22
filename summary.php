@@ -61,65 +61,7 @@ $if = $_SESSION['if'];
          <hr>
       </center>
       <br>
-      <?php
-         // System parameters reading
-         $sysver      = NULL;
-         $kernelver   = NULL;
-         $direwolfver = NULL;
-         $cputemp     = NULL;
-         $cpufreq     = NULL;
-         $uptime      = NULL;
-         
-         $sysver = shell_exec ("cat /etc/os-release | grep PRETTY_NAME |cut -d '=' -f 2");
-         $kernelver = shell_exec ("uname -r");
-         $direwolfver = shell_exec ("direwolf --v | grep -m 1 'version' | cut -d ' ' -f 4");
-         if (file_exists ("/sys/class/thermal/thermal_zone0/temp")) {
-             exec("cat /sys/class/thermal/thermal_zone0/temp", $cputemp);
-             $cputemp = $cputemp[0] / 1000;
-         }
-         if (file_exists ("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq")) {
-         	exec("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq", $cpufreq);
-         	$cpufreq = $cpufreq[0] / 1000;
-         }
-         $uptime = shell_exec('uptime -p');
-		?>
-        
       <br>
-      <table style="text-align: left; height: 116px; width: 600px;" border="1" cellpadding="2" cellspacing="2">
-         <tbody>
-            <tr align="center">
-               <td bgcolor="#ffd700" style="width: 600px;" colspan="2" rowspan="1"><span
-                  style="color: red; font-weight: bold;">SYSTEM STATUS</span></td>
-            </tr>
-            <tr>
-               <td bgcolor="silver" style="width: 200px;"><b>System Version: </b></td>
-               <td style="width: 400px;"><?php echo $sysver ?></td>
-            </tr>
-            <tr>
-               <td bgcolor="silver" style="width: 200px;"><b>Kernel Version: </b></td>
-               <td style="width: 400px;"><?php echo $kernelver ?></td>
-            </tr>
-            <tr>
-               <td bgcolor="silver" style="width: 200px;"><b>Direwolf Version: </b></td>
-               <td style="width: 400px;"><?php echo $direwolfver ?></td>
-            </tr>
-            <tr>
-               <td bgcolor="silver" style="width: 200px;"><b>System uptime: </b></td>
-               <td style="width: 400px;"><?php echo $uptime ?></td>
-            </tr>
-            <tr>
-               <td bgcolor="silver" style="width: 200px;"><b>CPU temperature:</b></td>
-               <td style="width: 400px;"><?php echo $cputemp ?> °C </td>
-            </tr>
-            <tr>
-               <td bgcolor="silver" style="width: 200px;"><b>CPU frequency: </b></td>
-               <td style="width: 400px;"><?php echo $cpufreq ?> MHz </td>
-            </tr>
-         </tbody>
-      </table>
-      <br><br>
-      <hr>
-      <br><br>
 	     <?php		
 		 $time = 0; //start of the time from which to read data from log in Unix timestamp type
 		 if(!isset($_GET['time']) or ($_GET['time'] == "")) { //if time range not specified
