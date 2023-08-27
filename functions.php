@@ -34,7 +34,7 @@ You can modify this program, but please give a credit to original author. Progra
 */
 
 // custom sorting function
-function cmp($a, $b) 
+function cmp($a, $b)
 {
 	if ($a[1] == $b[1]) {
 		return 0;
@@ -46,9 +46,16 @@ function logexists()
 {
 	global $logpath;
 	global $version;
-	if(!file_exists($logpath.gmdate("Y-m-d").".log"))  {
-			echo '<font color="red" size="6"><b>Error. Cannot open direwolf log file '.$logpath.gmdate("Y-m-d").'.log</b></font>';
-			echo '<br><br>Please check, if log file path in config.php is set correctly.<br>Plase check, if file '.$logpath.gmdate("Y-m-d").'.log exists.';
+        global $logname;
+        global $log;
+        if ($logname!="") {
+                $log=$logpath.$logname;
+        } else {
+                $log=$logpath.gmdate("Y-m-d").'.log';
+        }
+	if(!file_exists($log))  {
+			echo '<font color="red" size="6"><b>Error. Cannot open direwolf log file '.$log.'</b></font>';
+			echo '<br><br>Please check, if log file path in config.php is set correctly.<br>Plase check, if file '.$log.'.log exists.';
 			echo '<br><br><b>Pointless to continue.</b>';
 			echo '<br><br><br><br><br><br><center>Direwolf Simple Webstat version '.$version.' by Alfredo IZ7BOJ 2021</center>';
 			die();
