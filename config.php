@@ -4,7 +4,8 @@ Configuration file for Direwolf SimpleWebstat.
 ********************************************************/
 
 $version = "0.1beta";
-$logpath = "/var/log/direwolf/"; //path to the direwolf log directory
+$logpath = "/var/log/direwolf/"; //path of the direwolf log directory, without file name
+$logname = ""; //log file name. If empty, the standard Y-m-d.log file name (generated every day by direwolf) will be used.
 
 //interfaces index declared in direwolf conf file. Indexes separated by commas
 $interfaces=array(0,1);
@@ -13,8 +14,8 @@ $interfaces=array(0,1);
 $intdesc=array("144.800  VHF Port","432.500 UHF Port");
 
 //static_if skips interface choice every time
-$static_if = 1; //1 to enable using static interface 
-$static_if_index = 0; //interface index when stati_if is enabled
+$static_if = 1; //1 to enable static interface 
+$static_if_index = 0; //interface index when static_if is enabled
 
 //station posistion data for calculating distance from received station
 $stationlat = 41.248027; //station latitude in decimal degrees
