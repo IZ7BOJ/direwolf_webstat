@@ -44,7 +44,7 @@ logexists();
 
 if (isset($_GET['ajax'])) {
 	session_start();
-	$handle = fopen($logpath.date("Y-m-d").".log", 'r'); //open log
+	$handle = fopen($log, 'r'); //open log
 	if (isset($_SESSION['offset'])) { //this part is executed from 2nd cycle
 	$rawdata = stream_get_contents($handle, -1, $_SESSION['offset']); //open stream
 	if ($rawdata !== "")  { //only if last cycle got something, process new data, otherwise skip to next cycle
@@ -55,7 +55,7 @@ if (isset($_GET['ajax'])) {
 			} //close foreach
 		} //close  if ($rawdata !== "")
 	} else { //only at the beginning, print last rows
-		$log=file($logpath.date("Y-m-d").".log");
+		$log=file($log);
 		$rows=count($log)-1 -$startrows;
 		$counter=1;
 		while ($counter<=$startrows) {
@@ -73,7 +73,7 @@ function show($row) {
 
 	$fields=str_getcsv($row,",");
 	$timestamp=$fields[2];
-    $source=$fields[3];
+    	$source=$fields[3];
 	$heard=$fields[4];
 	$level=$fields[5];
 	$name=$fields[8];
