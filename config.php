@@ -11,10 +11,10 @@ $logpath = "/opt/direwolf/log/"; //path of the direwolf log directory, without f
 $logname = ""; //log file name. If empty, the standard Y-m-d.log file name (generated every day by direwolf) will be used.
 
 //interfaces index declared in direwolf conf file. Indexes separated by commas
-$interfaces=array(0);
+$interfaces=array(0,1);
 
 //interface descriptions. Insert strings between "" and separated by commas
-$intdesc=array("144.800  Warszawa East");
+$intdesc=array("144.800  VHF Port","432.500 UHF Port");
 
 //static_if skips interface choice every time
 $static_if = 1; //1 to enable static interface 
