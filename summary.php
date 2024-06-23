@@ -12,7 +12,7 @@ include 'functions.php';
 if(file_exists('custom.php')) include 'custom.php';
 
 logexists();
-  
+
 session_start(); //start session
 if(!isset($_SESSION['if'])) { //if interface not defined
    	header('Refresh: 0; url=chgif.php?chgif=1');
@@ -69,10 +69,11 @@ $if = $_SESSION['if'];
          $cputemp     = NULL;
          $cpufreq     = NULL;
          $uptime      = NULL;
+         $direwolfsts = NULL;
          
          $sysver = shell_exec ("cat /etc/os-release | grep PRETTY_NAME |cut -d '=' -f 2");
          $kernelver = shell_exec ("uname -r");
-         $direwolfver = shell_exec ("direwolf --v | grep -m 1 'version' | cut -d ' ' -f 4");
+         $direwolfver = shell_exec ("direwolf --v | grep -m 1 'version' | cut -d ' ' -f 5");
          if (file_exists ("/sys/class/thermal/thermal_zone0/temp")) {
              exec("cat /sys/class/thermal/thermal_zone0/temp", $cputemp);
              $cputemp = $cputemp[0] / 1000;
@@ -82,6 +83,7 @@ $if = $_SESSION['if'];
          	$cpufreq = $cpufreq[0] / 1000;
          }
          $uptime = shell_exec('uptime -p');
+         $direwolfsts = shell_exec('systemctl is-active direwolf');
 		?>
         
       <br>
@@ -114,6 +116,10 @@ $if = $_SESSION['if'];
             <tr>
                <td bgcolor="silver" style="width: 200px;"><b>CPU frequency: </b></td>
                <td style="width: 400px;"><?php echo $cpufreq ?> MHz </td>
+            </tr>
+            <tr>
+               <td bgcolor="silver" style="width: 200px;"><b>Direwolf status: </b></td>
+               <td style="width: 400px;"><?php if(str_starts_with($direwolfsts, "active")) echo("<span style=\"color:green\"><b>Working</b></span>"); else echo("<span style=\"color:red\"><b>Not working</b></span>"); ?> </td>
             </tr>
          </tbody>
       </table>
@@ -209,8 +215,12 @@ $if = $_SESSION['if'];
                </td>
                <td align="center">
                   <?php
-                     echo(date('m/d/Y H:i:s', $nm[1]))
-                     ?>
+                     //echo(date('d/m/Y H:i:s', $nm[1]));
+                     $date = new DateTimeImmutable();
+		     $date = $date->setTimestamp($nm[1]);
+	             $date = $date->setTimezone(new DateTimeZone($timezone));
+		     echo($date->format('H:i:s d/m/Y'));
+	          ?>
                </td>
                <td align="center">
                   <?php
