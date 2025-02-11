@@ -120,13 +120,13 @@ $if = $_SESSION['if'];
             <tr>
                <td bgcolor="silver" style="width: 200px;"><b>Direwolf status: </b></td>
                <td style="width: 400px;"><?php if(str_starts_with($direwolfsts, "active")) echo("<span style=\"color:green\"><b>Working</b></span>"); else echo("<span style=\"color:red\"><b>Not working</b></span>"); ?> </td>
-            </tr>
+      	    </tr>
          </tbody>
       </table>
       <br><br>
       <hr>
       <br><br>
-	     <?php		
+	     <?php
 		 $time = 0; //start of the time from which to read data from log in Unix timestamp type
 		 if(!isset($_GET['time']) or ($_GET['time'] == "")) { //if time range not specified
 			$time = time() - 3600; //so take frames from last 1 hour
@@ -134,18 +134,22 @@ $if = $_SESSION['if'];
 		 elseif($_GET['time'] == "e") { //if whole log
 			$time = 0;
 		 }
+		 elseif(strpos($_GET['time'],".log") !== false) { //older logfile selected
+			$logname=$_GET['time'];
+			logexists();
+		 }
 		 else { //else if the time range is choosen
 			$time = time() - ($_GET['time'] * 3600); //convert hours to seconds
 		 }
 
-		 $receivedstations = array();        
+		 $receivedstations = array();
 		 $staticstations = array();
 		 $movingstations = array();
 		 $otherstations = array();
 		 $directstations = array(); //stations received directly
 		 $viastations = array(); //stations received via digi
 		 $lines = 0;
-		 
+
 		 $logfile = file($log); //read log file
 		 $linesinlog = count($logfile);
 		 while ($lines < $linesinlog) { //read line by line
@@ -153,30 +157,40 @@ $if = $_SESSION['if'];
 			stationparse($line); // build received stations table
 			$lines++;
 		}
-		 
+
 		 uasort($receivedstations, 'cmp');
 		 echo "<b>Number of frames in log: </b>".$linesinlog;
          ?>
 	  <br><br>
       <form action="summary.php" method="GET">
-      Show stations since last:
+      Time interval:
       <select name="time">
-         <option value="1" <?php if(isset($_GET['time'])&&($_GET['time'] == 1)) echo 'selected="selected"'?>>1 hour</option>
-         <option value="2" <?php if(isset($_GET['time'])&&($_GET['time'] == 2)) echo 'selected="selected"'?>>2 hours</option>
-         <option value="4" <?php if(isset($_GET['time'])&&($_GET['time'] == 4)) echo 'selected="selected"'?>>4 hours</option>
-         <option value="6" <?php if(isset($_GET['time'])&&($_GET['time'] == 6)) echo 'selected="selected"'?>>6 hours</option>
-         <option value="12" <?php if(isset($_GET['time'])&&($_GET['time'] == 12)) echo 'selected="selected"'?>>12 hours</option>
-         <option value="24" <?php if(isset($_GET['time'])&&($_GET['time'] == 24)) echo 'selected="selected"'?>>1 day</option>
-         <option value="e" <?php if(isset($_GET['time'])&&($_GET['time'] == 'e')) echo 'selected="selected"'?>>all</option>
+         <option value="1" <?php if(isset($_GET['time'])&&($_GET['time'] == 1)) echo 'selected="selected"'?>>last 1 hour</option>
+         <option value="2" <?php if(isset($_GET['time'])&&($_GET['time'] == 2)) echo 'selected="selected"'?>>last 2 hours</option>
+         <option value="4" <?php if(isset($_GET['time'])&&($_GET['time'] == 4)) echo 'selected="selected"'?>>last 4 hours</option>
+         <option value="6" <?php if(isset($_GET['time'])&&($_GET['time'] == 6)) echo 'selected="selected"'?>>last 6 hours</option>
+         <option value="12" <?php if(isset($_GET['time'])&&($_GET['time'] == 12)) echo 'selected="selected"'?>>last 12 hours</option>
+         <option value="24" <?php if(isset($_GET['time'])&&($_GET['time'] == 24)) echo 'selected="selected"'?>>last 1 day</option>
+         <option value="e" <?php if(isset($_GET['time'])&&($_GET['time'] == 'e')) echo 'selected="selected"'?>>all of today</option>
+	<?php
+        $logfiles_arr=scandir($logpath);
+        foreach ($logfiles_arr as &$value){
+		if (strpos($value, '.log')!==false) { //exclude "." and ".."
+		?>
+	 <option value=<?php echo $value ; if(isset($_GET['time'])&&($_GET['time'] == $value)) echo ' selected="selected"'?>><?php echo $value?></option>
+		<?php
+	 	} //close if
+	} //close foreach
+	?>
       </select>
       <input type="submit" value="Refresh">
       </form>
-	  <br>
-	  <?php
-	  echo "<br><br><b>".count($receivedstations)." Stations received on radio interface ".$if." (sorted by Last Time Heard)</b><br><br>";
-	  ?>
-	  <br>
-	  <script src="sorttable.js"></script>
+      <br>
+      <?php
+      echo "<br><br><b>".count($receivedstations)." Stations received on radio interface ".$if." (sorted by Last Time Heard)</b><br><br>";
+      ?>
+      <br>
+      <script src="sorttable.js"></script>
       <table style="text-align: left; height: 116px; width: 1200px;" border="1" class="sortable" id="table">
          <tbody>
             <tr>
@@ -191,9 +205,9 @@ $if = $_SESSION['if'];
                <th bgcolor="#ffd700"><b><font color="blue">Last Bearing</font></b></th>
             </tr>
             <?php
-               foreach($receivedstations as $c=>$nm)
-               {
-               ?>
+            foreach($receivedstations as $c=>$nm)
+            {
+	    ?>
             <tr>
                <td bgcolor="silver"><b><?php echo $c ?></b></td>
                <td align="center"><?php echo $nm[0] ?></td>
