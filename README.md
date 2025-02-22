@@ -77,7 +77,7 @@ Set $static_if to 1 to enable
 ```
 NOTE: remember to execute direwolf with "-l" option, otherwise the log is not generated and the interface won't work
 
-## Installing and using for Linux Version
+## Installing and using for Windows Version
 A special version that can run under windows is available in a separate branch: https://github.com/IZ7BOJ/direwolf_webstat/tree/Windows-Version
 In the Windows version, the system table is omitted since it's not so easy to retrieve OS data.
 My tests have been done with Abyss Web Server and php8.2.
